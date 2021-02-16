@@ -25,6 +25,6 @@ exe = EXE(pyz,
           upx=True,
           console=False , icon='images/icon-256.icns')
 app = BUNDLE(exe,
-             name='NodeMCU-PyFlasher-5.0.0.app',
+             name='eBrain Wizard / eBrain Flasher -0.1.0.app',
              icon='./images/icon-256.icns',
              bundle_identifier='com.frightanic.nodemcu-pyflasher')
