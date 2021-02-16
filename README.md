@@ -13,6 +13,14 @@ Scan the [list of open issues](https://github.com/marcelstoer/nodemcu-pyflasher/
 ## Getting help
 In the unlikely event that you're stuck with this simple tool the best way to get help is to turn to the ["Tools and IDE" subforum on esp8266.com](http://www.esp8266.com/viewforum.php?f=22).
 
+## Windows work around us NodeMCU
+
+To get the path of the ebrain bin that you downloaded do the following:
+
+- hold shift while right clicking the file
+- copy as path
+- paste this into NodeMCU's Config Tab > First Field
+- Delete Quotes
 
 ## Build it yourself
 If you want to build this application yourself you need to:
