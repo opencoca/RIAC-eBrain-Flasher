@@ -10,7 +10,7 @@ Self-contained [NodeMCU](https://github.com/nodemcu/nodemcu-firmware) flasher wi
 ![Image of NodeMCU PyFlasher GUI](images/gui.png)
 
 ## Installation
-NodeMCU PyFlasher doesn't have to be installed, just double-click it and it'll start. Check the [releases section](https://github.com/marcelstoer/nodemcu-pyflasher/releases) for downloads for your platform. For every release there's at least a .exe file for Windows. Starting from 3.0 there's also a .dmg for macOS.
+NodeMCU PyFlasher doesn't have to be installed, just double-click it and it'll start. Check the [releases section](https://github.com/opencoca/nodemcu-pyflasher/releases) for downloads for your platform. For every release there's at least a .exe file for Windows. Starting from 3.0 there's also a .dmg for macOS.
 
 ## Status
 Scan the [list of open issues](https://github.com/marcelstoer/nodemcu-pyflasher/issues) for bugs and pending features.
@@ -26,7 +26,7 @@ In the unlikely event that you're stuck with this simple tool the best way to ge
 ## Build it yourself
 If you want to build this application yourself you need to:
 
-- Install [Python 3.x](https://www.python.org/downloads/) 
+- Install [Python 3.x](https://www.python.org/downloads/)
 - Install [PipX]
 ```
     python3 -m pip install --user pipx
@@ -34,7 +34,8 @@ If you want to build this application yourself you need to:
 ```
 - Install [Pipenv](https://pypi.org/project/pipenv/)  `pipx install pipenv`
 - run `pipenv install` inside the project dir
-- 
+- Install [Brew](//brew.sh) `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+- Install [create-dmg](https://github.com/create-dmg/create-dmg) `brew install create-dmg`
 
 **A note on Linux:** As described on the [downloads section of `wxPython`](https://www.wxpython.org/pages/downloads/), wheels for Linux are complicated and may require you to run something like this to install `wxPython` correctly:
 
