@@ -23,21 +23,15 @@ class AboutDlg(wx.Dialog):
     <img src="{0}/images/espressif-64.png" width="64" height="64" alt="Espressif, producers of ESP8266 et.al.">
     <img src="{0}/images/wxpython-64.png" width="64" height="43" alt="wxPython, cross-platform GUI framework">
 
-    <h1>NodeMCU PyFlasher</h1>
+    <h1>eBrain Update Wizard</h1>
 
     <p>Version {1}</p>
 
-    <p>Fork the <a style="color: #004CE5;" href="https://github.com/marcelstoer/nodemcu-pyflasher">project on
+    <p>Fork the <a style="color: #004CE5;" href="https://github.com/opencoca/eBrain-Flasher">project on
     GitHub</a> and help improve it for all!</p>
 
-    <p>
-    As with everything I offer for free, this is donation-ware.
-    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HFN4ZMET5XS2Q">
-    <img src="{0}/images/paypal-256.png" width="256" height="88" alt="Donate with PayPal">
-    </a>
-    </p>
 
-    <p>&copy; {2} Marcel St&ouml;r. Licensed under MIT.</p>
+    <p>&copy; {2} Robot In a Can & OpenCo Licensed under AGPL.</p>
 
     <p>
         <wxp module="wx" class="Button">
@@ -51,7 +45,7 @@ class AboutDlg(wx.Dialog):
 '''
 
     def __init__(self, parent):
-        wx.Dialog.__init__(self, parent, wx.ID_ANY, "About NodeMCU PyFlasher")
+        wx.Dialog.__init__(self, parent, wx.ID_ANY, "About eBrain Update Wizard")
         html = HtmlWindow(self, wx.ID_ANY, size=(420, -1))
         if "gtk2" in wx.PlatformInfo or "gtk3" in wx.PlatformInfo:
             html.SetStandardFonts()

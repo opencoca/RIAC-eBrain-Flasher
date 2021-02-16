@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # rm -fr build dist
-VERSION=5.0.0
-NAME=NodeMCU-PyFlasher
+VERSION=0.1.0
+NAME=eBrain Update Wizard
 
 pyinstaller --log-level=DEBUG \
             --noconfirm \
