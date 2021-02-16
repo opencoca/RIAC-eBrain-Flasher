@@ -25,7 +25,7 @@ __flash_help__ = '''
 </p>
 '''
 __auto_select__ = "Auto-select"
-__auto_select_explanation__ = "(first port with Espressif device)"
+__auto_select_explanation__ = "(Attempt to detect port with eBrain)"
 __supported_baud_rates__ = [9600, 57600, 74880, 115200, 230400, 460800, 921600]
 
 # ---------------------------------------------------------------------------
@@ -230,6 +230,8 @@ class NodeMcuFlasher(wx.Frame):
             radio_button.Bind(wx.EVT_RADIOBUTTON, on_baud_changed)
             sizer.Add(radio_button)
             sizer.AddSpacer(10)
+            # TODO clean this out in a better way
+            sizer.ShowItems(False)
 
         for idx, rate in enumerate(__supported_baud_rates__):
             add_baud_radio_button(baud_boxsizer, idx, rate)
@@ -244,6 +246,8 @@ class NodeMcuFlasher(wx.Frame):
             radio_button.SetValue(mode == self._config.mode)
             sizer.Add(radio_button)
             sizer.AddSpacer(10)
+           # TODO clean this out in a better way
+            sizer.ShowItems(False)
 
         add_flash_mode_radio_button(flashmode_boxsizer, 0, "qio", "Quad I/O (QIO)")
         add_flash_mode_radio_button(flashmode_boxsizer, 1, "dio", "Dual I/O (DIO)")
@@ -264,7 +268,7 @@ class NodeMcuFlasher(wx.Frame):
         add_erase_radio_button(erase_boxsizer, 0, False, "no", erase is False)
         add_erase_radio_button(erase_boxsizer, 1, True, "yes, wipes all data", erase is True)
 
-        button = wx.Button(panel, -1, "Flash NodeMCU")
+        button = wx.Button(panel, -1, "Flash eBrain Frimware")
         button.Bind(wx.EVT_BUTTON, on_clicked)
 
         self.console_ctrl = wx.TextCtrl(panel, style=wx.TE_MULTILINE | wx.TE_READONLY | wx.HSCROLL)
@@ -275,9 +279,9 @@ class NodeMcuFlasher(wx.Frame):
         self.console_ctrl.SetDefaultStyle(wx.TextAttr(wx.BLUE))
 
         port_label = wx.StaticText(panel, label="Serial port")
-        file_label = wx.StaticText(panel, label="NodeMCU firmware")
-        baud_label = wx.StaticText(panel, label="Baud rate")
-        flashmode_label = wx.StaticText(panel, label="Flash mode")
+        file_label = wx.StaticText(panel, label="eBrain firmware")
+        baud_label = wx.StaticText(panel, label="")
+        flashmode_label = wx.StaticText(panel, label="")
 
         def on_info_hover(event):
             from HtmlPopupTransientWindow import HtmlPopupTransientWindow
@@ -289,14 +293,15 @@ class NodeMcuFlasher(wx.Frame):
             win.Position(image_position, (0, image_size[1]))
 
             win.Popup()
-
-        icon = wx.StaticBitmap(panel, wx.ID_ANY, images.Info.GetBitmap())
-        icon.Bind(wx.EVT_MOTION, on_info_hover)
+         
+        # TODO clean this out in a better way
+        #icon = wx.StaticBitmap(panel, wx.ID_ANY, images.Info.GetBitmap())
+        #icon.Bind(wx.EVT_MOTION, on_info_hover)
 
         flashmode_label_boxsizer = wx.BoxSizer(wx.HORIZONTAL)
         flashmode_label_boxsizer.Add(flashmode_label, 1, wx.EXPAND)
         flashmode_label_boxsizer.AddStretchSpacer(0)
-        flashmode_label_boxsizer.Add(icon)
+        #flashmode_label_boxsizer.Add(icon)
 
         erase_label = wx.StaticText(panel, label="Erase flash")
         console_label = wx.StaticText(panel, label="Console")
