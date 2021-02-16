@@ -14,23 +14,18 @@ import images as images
 from serial import SerialException
 from serial.tools import list_ports
 
-__version__ = "5.0.0"
+__version__ = "0.1.0"
 __flash_help__ = '''
-<p>This setting is highly dependent on your device!<p>
+<p>This is the first version of the eBrain Updater!<p>
 <p>
-  Details at <a style="color: #004CE5;"
-        href="https://www.esp32.com/viewtopic.php?p=5523&sid=08ef44e13610ecf2a2a33bb173b0fd5c#p5523">http://bit.ly/2v5Rd32</a>
-  and in the <a style="color: #004CE5;" href="https://github.com/espressif/esptool/#flash-modes">esptool
-  documentation</a>
+  Details at <a style="color: #004CE5;" href="https://robotinacan.com/support">Robot In a Can</a>
 <ul>
-  <li>Most ESP32 and ESP8266 ESP-12 use DIO.</li>
-  <li>Most ESP8266 ESP-01/07 use QIO.</li>
-  <li>ESP8285 requires DOUT.</li>
+  <li></li>
 </ul>
 </p>
 '''
 __auto_select__ = "Auto-select"
-__auto_select_explanation__ = "(first port with Espressif device)"
+__auto_select_explanation__ = "(Attempt to detect port with eBrain)"
 __supported_baud_rates__ = [9600, 57600, 74880, 115200, 230400, 460800, 921600]
 
 # ---------------------------------------------------------------------------
@@ -235,6 +230,8 @@ class NodeMcuFlasher(wx.Frame):
             radio_button.Bind(wx.EVT_RADIOBUTTON, on_baud_changed)
             sizer.Add(radio_button)
             sizer.AddSpacer(10)
+            # TODO clean this out in a better way
+            sizer.ShowItems(False)
 
         for idx, rate in enumerate(__supported_baud_rates__):
             add_baud_radio_button(baud_boxsizer, idx, rate)
@@ -249,6 +246,8 @@ class NodeMcuFlasher(wx.Frame):
             radio_button.SetValue(mode == self._config.mode)
             sizer.Add(radio_button)
             sizer.AddSpacer(10)
+           # TODO clean this out in a better way
+            sizer.ShowItems(False)
 
         add_flash_mode_radio_button(flashmode_boxsizer, 0, "qio", "Quad I/O (QIO)")
         add_flash_mode_radio_button(flashmode_boxsizer, 1, "dio", "Dual I/O (DIO)")
@@ -269,7 +268,7 @@ class NodeMcuFlasher(wx.Frame):
         add_erase_radio_button(erase_boxsizer, 0, False, "no", erase is False)
         add_erase_radio_button(erase_boxsizer, 1, True, "yes, wipes all data", erase is True)
 
-        button = wx.Button(panel, -1, "Flash NodeMCU")
+        button = wx.Button(panel, -1, "Flash eBrain Frimware")
         button.Bind(wx.EVT_BUTTON, on_clicked)
 
         self.console_ctrl = wx.TextCtrl(panel, style=wx.TE_MULTILINE | wx.TE_READONLY | wx.HSCROLL)
@@ -280,9 +279,9 @@ class NodeMcuFlasher(wx.Frame):
         self.console_ctrl.SetDefaultStyle(wx.TextAttr(wx.BLUE))
 
         port_label = wx.StaticText(panel, label="Serial port")
-        file_label = wx.StaticText(panel, label="NodeMCU firmware")
-        baud_label = wx.StaticText(panel, label="Baud rate")
-        flashmode_label = wx.StaticText(panel, label="Flash mode")
+        file_label = wx.StaticText(panel, label="eBrain firmware")
+        baud_label = wx.StaticText(panel, label="")
+        flashmode_label = wx.StaticText(panel, label="")
 
         def on_info_hover(event):
             from HtmlPopupTransientWindow import HtmlPopupTransientWindow
@@ -294,14 +293,15 @@ class NodeMcuFlasher(wx.Frame):
             win.Position(image_position, (0, image_size[1]))
 
             win.Popup()
-
-        icon = wx.StaticBitmap(panel, wx.ID_ANY, images.Info.GetBitmap())
-        icon.Bind(wx.EVT_MOTION, on_info_hover)
+         
+        # TODO clean this out in a better way
+        #icon = wx.StaticBitmap(panel, wx.ID_ANY, images.Info.GetBitmap())
+        #icon.Bind(wx.EVT_MOTION, on_info_hover)
 
         flashmode_label_boxsizer = wx.BoxSizer(wx.HORIZONTAL)
         flashmode_label_boxsizer.Add(flashmode_label, 1, wx.EXPAND)
         flashmode_label_boxsizer.AddStretchSpacer(0)
-        flashmode_label_boxsizer.Add(icon)
+        #flashmode_label_boxsizer.Add(icon)
 
         erase_label = wx.StaticText(panel, label="Erase flash")
         console_label = wx.StaticText(panel, label="Console")
@@ -340,7 +340,7 @@ class NodeMcuFlasher(wx.Frame):
     def _build_status_bar(self):
         self.statusBar = self.CreateStatusBar(2, wx.STB_SIZEGRIP)
         self.statusBar.SetStatusWidths([-2, -1])
-        status_text = "Welcome to NodeMCU PyFlasher %s" % __version__
+        status_text = "Welcome to eBrain Update Wizard %s" % __version__
         self.statusBar.SetStatusText(status_text, 0)
 
     def _build_menu_bar(self):
@@ -349,14 +349,14 @@ class NodeMcuFlasher(wx.Frame):
         # File menu
         file_menu = wx.Menu()
         wx.App.SetMacExitMenuItemId(wx.ID_EXIT)
-        exit_item = file_menu.Append(wx.ID_EXIT, "E&xit\tCtrl-Q", "Exit NodeMCU PyFlasher")
+        exit_item = file_menu.Append(wx.ID_EXIT, "E&xit\tCtrl-Q", "Exit eBrain Update Wizard")
         exit_item.SetBitmap(images.Exit.GetBitmap())
         self.Bind(wx.EVT_MENU, self._on_exit_app, exit_item)
         self.menuBar.Append(file_menu, "&File")
 
         # Help menu
         help_menu = wx.Menu()
-        help_item = help_menu.Append(wx.ID_ABOUT, '&About NodeMCU PyFlasher', 'About')
+        help_item = help_menu.Append(wx.ID_ABOUT, '&About eBrain Update Wizard', 'About')
         self.Bind(wx.EVT_MENU, self._on_help_about, help_item)
         self.menuBar.Append(help_menu, '&Help')
 
@@ -407,7 +407,7 @@ class MySplashScreen(wx.adv.SplashScreen):
             self._show_main()
 
     def _show_main(self):
-        frame = NodeMcuFlasher(None, "NodeMCU PyFlasher")
+        frame = NodeMcuFlasher(None, "eBrain Update Wizard")
         frame.Show()
         if self.__fc.IsRunning():
             self.Raise()
@@ -419,7 +419,7 @@ class MySplashScreen(wx.adv.SplashScreen):
 class App(wx.App, wx.lib.mixins.inspection.InspectionMixin):
     def OnInit(self):
         wx.SystemOptions.SetOption("mac.window-plain-transition", 1)
-        self.SetAppName("NodeMCU PyFlasher")
+        self.SetAppName("eBrain Update Wizard")
 
         # Create and show the splash screen.  It will then create and
         # show the main frame when it is time to do so.  Normally when
