@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+esptool = ">=3.0"
+pyserial = "~=3.5"
+pyinstaller = "~=4.2"
+httplib2 = ">=0.18.1"
+wxPython = "~=4.1.1"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"
