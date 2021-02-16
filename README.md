@@ -1,9 +1,3 @@
-# NodeMCU PyFlasher
-[![License](https://marcelstoer.github.io/nodemcu-pyflasher/images/mit-license-badge.svg)](https://github.com/marcelstoer/nodemcu-pyflasher/blob/master/LICENSE)
-[![Github Releases](https://img.shields.io/github/downloads/marcelstoer/nodemcu-pyflasher/total.svg?style=flat)](https://github.com/marcelstoer/nodemcu-pyflasher/releases)
-[![PayPal Donation](https://marcelstoer.github.io/nodemcu-pyflasher/images/donate-paypal-badge.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HFN4ZMET5XS2Q)
-[![Twitter URL](https://marcelstoer.github.io/nodemcu-pyflasher/images/twitter-badge.svg)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fmarcelstoer%2Fnodemcu-pyflasher)
-[![Facebook URL](https://marcelstoer.github.io/nodemcu-pyflasher/images/facebook-badge.svg)](https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgithub.com%2Fmarcelstoer%2Fnodemcu-pyflasher)
 
 Self-contained [NodeMCU](https://github.com/nodemcu/nodemcu-firmware) flasher with GUI based on [esptool.py](https://github.com/espressif/esptool) and [wxPython](https://www.wxpython.org/).
 
@@ -17,7 +11,6 @@ Scan the [list of open issues](https://github.com/marcelstoer/nodemcu-pyflasher/
 
 **Note**
 
-This is my first Python project. If you have constructive feedback as for how to improve the code please do reach out to me.
 
 ## Getting help
 In the unlikely event that you're stuck with this simple tool the best way to get help is to turn to the ["Tools and IDE" subforum on esp8266.com](http://www.esp8266.com/viewforum.php?f=22).
