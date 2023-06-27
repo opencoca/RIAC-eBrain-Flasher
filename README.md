@@ -70,4 +70,7 @@ For quite a while I planned to write a self-contained GUI tool which would use e
 - Uses [PyInstaller](https://github.com/pyinstaller/pyinstaller) to create self-contained executable for Windows and Mac. The packaged app can run standalone i.e. without installing itself, a Python interpreter or any modules.
 
 ## License
-[MIT](http://opensource.org/licenses/MIT) © Marcel Stör
+
+Copyright 2019–2023 12787326 Canada Inc.
+
+Licensed under the AGPLv3: https://opensource.org/licenses/agpl-3.0 & [MIT](http://opensource.org/licenses/MIT) © Marcel Stör
